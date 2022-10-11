@@ -16,6 +16,15 @@ spec:
     spec:
       containers:
       - name: udagram-frontend
-        image: minhnk/udagram-frontend-pj5:v1
+        image: minhnk/udagram-frontend-pj5:v2
         ports:
         - containerPort: 3000
+        volumeMounts:
+            - name: aws-secret
+              mountPath: "/root/.aws/"
+              readOnly: true
+      restartPolicy: Always
+      volumes:
+        - name: aws-secret
+          secret:
+            secretName: aws-secret

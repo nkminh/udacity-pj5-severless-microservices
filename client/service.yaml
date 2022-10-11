@@ -6,7 +6,9 @@ metadata:
     app: udagram-frontend
 spec:
   ports:
-  - port: 3000
+  - port: 80
+    targetPort: 3000
     protocol: TCP
   selector:
     app: udagram-frontend
+  type: LoadBalancer

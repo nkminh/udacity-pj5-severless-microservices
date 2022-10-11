@@ -1,6 +1,18 @@
 # Serverless TODO
 
+
 To implement this project, you need to implement a simple TODO application using AWS Lambda and Serverless framework. Search for all comments starting with the `TODO:` in the code to find the placeholders that you need to implement.
+
+# Step Deploy Application to cloud
+
+1. clone src from git: https://github.com/nkminh/udacity-pj5-severless-microservices
+2. cd udacity-pj5-severless-microservices
+3. docker build -t minhnk/udagram-frontend-pj5:v2 .
+4. docker push minhnk/udagram-frontend-pj5:v2
+5. kubectl apply -f aws-secret.yaml
+6. kubectl apply -f client/deployment.yaml
+7. kubectl apply -f client/service.yaml
+
 
 # Functionality of the application
 
