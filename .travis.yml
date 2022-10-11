@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - 12
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - docker --version # print the version for logging
+  # - docker build -t simple-node .
+  # - docker build -t simple-node --build-arg NAME=${NAME} .
+  - docker build -t udagram-frontend ./client
+
+  # Tagging
+  - docker tag udagram-frontend minhnk/udagram-frontend-pj5:v1
+  # - docker tag simple-node minhnk/simple-node:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push minhnk/udagram-frontend-pj5:v1
+  # - docker push minhnk/simple-node
